@@ -1,0 +1,115 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my-assistant"
+version = "1.0.0"
+description = "AI-Powered Windows Desktop Voice Assistant"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "My Assistant Team", email = "dev@myassistant.app"}
+]
+keywords = ["voice-assistant", "ai", "windows", "desktop", "automation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: Microsoft :: Windows :: Windows 11",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Desktop Environment",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "customtkinter>=5.2.0",
+    "Pillow>=10.0.0",
+    "psutil>=5.9.0",
+    "pyautogui>=0.9.54",
+    "pyaudio>=0.2.13",
+    "SpeechRecognition>=3.10.0",
+    "pyttsx3>=2.90",
+    "vosk>=0.3.45",
+    "openwakeword>=0.6.0",
+    "numpy>=1.24.0",
+    "scipy>=1.11.0",
+    "webrtcvad>=2.0.10",
+    "requests>=2.31.0",
+    "websockets>=11.0",
+    "aiohttp>=3.8.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "python-dateutil>=2.8.0",
+    "schedule>=1.2.0",
+    "cryptography>=41.0.0",
+    "pystray>=0.19.0",
+    "comtypes>=1.2.0",
+    "WMI>=1.5.1",
+    "pypiwin32>=223; platform_system=='Windows'",
+    "pywin32>=306; platform_system=='Windows'",
+    "screen_brightness_control>=0.20.0",
+    "plyer>=2.1.0",
+    "beautifulsoup4>=4.12.0",
+    "pyperclip>=1.8.2",
+    "pynput>=1.7.6",
+    "mss>=9.0.0",
+    "opencv-python>=4.8.0",
+    "pytesseract>=0.3.10",
+    "openai>=1.0.0",
+    "anthropic>=0.3.0",
+    "google-generativeai>=0.3.0",
+    "sqlite-utils>=3.35",
+    "watchdog>=3.0.0",
+    "appdirs>=1.4.4",
+    "packaging>=23.0",
+    "semantic-version>=2.10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.5.0",
+    "pyinstaller>=6.0.0",
+]
+gpu = [
+    "torch>=2.0.0",
+    "torchaudio>=2.0.0",
+    "faster-whisper>=0.9.0",
+]
+
+[project.scripts]
+my-assistant = "assistant.__main__:main"
+
+[project.gui-scripts]
+my-assistant-gui = "assistant.__main__:main_gui"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "SIM"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
